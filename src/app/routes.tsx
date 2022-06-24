@@ -5,6 +5,7 @@ import { Dashboard } from '@app/Dashboard/Dashboard';
 import { Support } from '@app/Support/Support';
 import { GeneralSettings } from '@app/Settings/General/GeneralSettings';
 import { ProfileSettings } from '@app/Settings/Profile/ProfileSettings';
+import { UserDetails } from '@app/UserDetailsFolder/UserDetails';
 import { NotFound } from '@app/NotFound/NotFound';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
 import { LastLocationProvider, useLastLocation } from 'react-router-last-location';
@@ -64,6 +65,14 @@ const routes: AppRouteConfig[] = [
       },
     ],
   },
+  {
+    component: UserDetails,
+    exact: true,
+    isAsync: true,
+    label: 'User Details',
+    path: '/userdetails',
+    title: 'PatternFly Seed | User Details Page',
+  },
 ];
 
 // a custom hook for sending focus to the primary content container
@@ -89,7 +98,7 @@ const RouteWithTitleUpdates = ({ component: Component, isAsync = false, title, .
     return <Component {...rest} {...routeProps} />;
   }
 
-  return <Route render={routeWithTitle} {...rest}/>;
+  return <Route render={routeWithTitle} {...rest} />;
 };
 
 const PageNotFound = ({ title }: { title: string }) => {
